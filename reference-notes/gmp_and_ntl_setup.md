@@ -111,3 +111,4 @@ a * b = 12193263113702179522618503273362292369
 | Link in Makefile         | `LIBS = -lntl -lgmp`                      |
 | Test build & run         | `g++ -std=c++17 ... -lntl -lgmp`          |
 
+*This guide was written by ChatGPT 4o*
