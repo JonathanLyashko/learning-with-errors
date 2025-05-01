@@ -151,5 +151,5 @@ This document outlines a step-by-step development workflow to implement a vanill
 
 ---
 
-*This dev flow was written by ChatGPT 04-mini-high*
+*This dev flow was written by ChatGPT o4-mini-high*
 
