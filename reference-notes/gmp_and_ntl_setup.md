@@ -96,7 +96,7 @@ g++ -std=c++17 -o test src/test_gmp_ntl.cpp -lntl -lgmp
 
 Expected output:
 ```
-a * b = 12193263113702179522618503273362292369
+a * b = 12193263113702179522374638011112635269
 10 + 15 mod 17 = 8
 ```
 
