@@ -1,6 +1,6 @@
 #pragma once 
 #include <gmp.h>
-#include <cstdint>
+#include <cstdint> //for unsigned or signed 64b int
 #include <stdexcept>
 
 class ModInt {

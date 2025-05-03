@@ -1,9 +1,9 @@
-#include "ModInt.h"
+#include "ModInt.hpp"
 #include <gmp.h>
-#include <stdexcept>
+#include <stdexcept> //for unsigned or signed 64b int
 
 
-// constructor: check the value modulus, choose if we need small or big
+// constructor: check the value and modulus, choose if we need small or big
 ModInt::ModInt(const std::string& value_str, const std::string& modulus_str) {
     mpz_t tmp_val;
     mpz_t tmp_mod; 
