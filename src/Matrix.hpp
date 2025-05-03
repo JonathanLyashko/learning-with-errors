@@ -41,7 +41,7 @@ class Matrix {
 
     private: 
 
-        size_t rows;
+        size_t rows_;
         size_t cols_;
         mpz_class mod_;
         std::vector<ModInt> data_; // size == rows_ * cols_ (access using i*cols_ + j)
