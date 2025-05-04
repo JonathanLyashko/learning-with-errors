@@ -1,7 +1,5 @@
 #include <iostream>
 #include <cassert>
-#include <cmath>
-#include <unordered_map>
 #include <exception>
 #include "../src/Random.hpp"
 
