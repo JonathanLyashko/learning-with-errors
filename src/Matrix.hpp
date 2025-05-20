@@ -39,6 +39,26 @@ class Matrix {
         NTL::Mat<NTL::ZZ> toNTL() const;
         static Matrix fromNTL(const NTL::Mat<NTL::ZZ>& M, const std::string& mod_str);
 
+        // --- MATRIX OPERATIONS ---
+        // arithmetic
+        Matrix operator+(const Matrix& rhs) const;
+        Matrix operator-(const Matrix& rhs) const;
+        Matrix operator*(const Matrix& rhs) const; // matrix mulitplication
+        Matrix operator*(const ModInt& scalar) const; // scalar multiplication
+        friend Matrix operator*(const ModInt& scalar, const Matrix& matrix); // Scalar multiplication (friend)
+
+        // elemetn-wise operations
+        Matrix elementWiseMultiply(const Matrix& rhs) const; // Hadamard product
+
+        // special operations
+        Matrix transpose() const;
+        static Matrix identity(size_t n, const std::string& mod_str);
+
+        // vector operations
+        ModInt dotProduct(const Matrix& rhs) const;
+        Matrix outerProduct(const Matrix& rhs) const;
+        
+
 
     private: 
 
