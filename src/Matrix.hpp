@@ -58,7 +58,11 @@ class Matrix {
         ModInt dotProduct(const Matrix& rhs) const;
         Matrix outerProduct(const Matrix& rhs) const;
         
-
+        // LWE related operations
+        // Add random error vector with Gaussian distribution
+        static Matrix gaussianErrorVector(size_t n, const std::string& mod_str, double stddev);
+        // Generate a uniform random matrix (for LWE public key A)
+        static Matrix randomUniform(size_t rows, size_t cols, const std::string& mod_str);
 
     private: 
 
