@@ -16,12 +16,13 @@ class Matrix {
 
     public: 
         // --- CONSTRUCTORS ---
+        // leaving the move constructor and assignment unfinished for now because I don't know if we'll need them
         Matrix(); // default constructor creates a 0x0 matrix with mod = 1
         Matrix(size_t rows, size_t cols, const std::string& mod_str); // dimension based constructor of size rows x cols (zero filled)
         Matrix(const Matrix& other); // copy constructor
-        Matrix(Matrix&& other) noexcept; // move constructor
+        // Matrix(Matrix&& other) noexcept; // move constructor
         Matrix& operator=(const Matrix& other); // copy assignment
-        Matrix& operator=(Matrix&& other) noexcept; // move assignment
+        // Matrix& operator=(Matrix&& other) noexcept; // move assignment
         ~Matrix(); // destructor
 
         // --- DIMENSIONS ---

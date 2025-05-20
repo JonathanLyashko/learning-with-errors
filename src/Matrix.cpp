@@ -14,6 +14,7 @@ Matrix::Matrix() {
     this->mod_ = mpz_class(1);
     this->data_ = {}; // size == rows_ * cols_ (access using i*cols_ + j)
 }
+
 // dimension based constructor of size rows x cols (zero filled)
 Matrix::Matrix(size_t rows, size_t cols, const std::string& mod_str) {
     this->rows_ = rows;
@@ -21,6 +22,32 @@ Matrix::Matrix(size_t rows, size_t cols, const std::string& mod_str) {
     this->mod_ = mpz_class(mod_str);
     this->data_ = std::vector<ModInt>(rows * cols, ModInt("0", mod_str));
 }; 
+
+// copy constructor
+Matrix::Matrix(const Matrix& other) {
+    this->rows_ = other.rows_;
+    this->cols_ = other.cols_;
+    this->mod_ = other.mod_;
+    this->data_ = other.data_;
+};
+
+// copy assignment
+Matrix& Matrix::operator=(const Matrix& other) {
+    if (this == &other) return *this;
+
+    this->rows_ = other.rows_;
+    this->cols_ = other.cols_;
+    this->mod_ = other.mod_;
+
+    // std vector handles this memory management with this assignment
+    this->data_ = other.data_;
+
+}; 
+
+// destructor
+Matrix::~Matrix() {
+    // no real destructor needed since std vector handles deallocation
+};
 
 
 
