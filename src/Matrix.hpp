@@ -16,7 +16,7 @@ class Matrix {
 
     public: 
         // --- CONSTRUCTORS ---
-        Matrix(); // default constructor creates a 0x0 matrix
+        Matrix(); // default constructor creates a 0x0 matrix with mod = 1
         Matrix(size_t rows, size_t cols, const std::string& mod_str); // dimension based constructor of size rows x cols (zero filled)
         Matrix(const Matrix& other); // copy constructor
         Matrix(Matrix&& other) noexcept; // move constructor
@@ -25,6 +25,7 @@ class Matrix {
         ~Matrix(); // destructor
 
         // --- DIMENSIONS ---
+        // getter functions
         size_t rows() const noexcept;
         size_t cols() const noexcept;
         std::string modulus() const noexcept;
