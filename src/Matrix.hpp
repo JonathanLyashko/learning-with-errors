@@ -47,7 +47,7 @@ class Matrix {
         Matrix operator*(const ModInt& scalar) const; // scalar multiplication
         friend Matrix operator*(const ModInt& scalar, const Matrix& matrix); // Scalar multiplication (friend)
 
-        // elemetn-wise operations
+        // element-wise operations
         Matrix elementWiseMultiply(const Matrix& rhs) const; // Hadamard product
 
         // special operations
