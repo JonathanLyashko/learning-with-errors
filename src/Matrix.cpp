@@ -145,6 +145,41 @@ Matrix Matrix::operator+(const Matrix& rhs) const {
     return result;
 };
 
+Matrix Matrix::operator-(const Matrix& rhs) const {
+    if (rows_ != rhs.rows_ || cols_ != rhs.cols_) {
+        throw std::invalid_argument("Matrix dimensions do not match. This is required for matrix subtraction");
+    }
+
+    if (mod_ != rhs.mod_) {
+        throw std::invalid_argument("Matrix moduli do not match. This is required for modular matrix subtraction");
+    }
+
+    NTL::Mat<NTL::ZZ> left = this->toNTL(); 
+    NTL::Mat<NTL::ZZ> right = rhs.toNTL();
+    NTL::Mat<NTL::ZZ> difference;
+    NTL::sub(difference, left, right);
+    Matrix result = fromNTL(difference, mod_.get_str());
+    return result;
+};
+
+// matrix mulitplication
+Matrix Matrix::operator*(const Matrix& rhs) const {
+    if (cols_ != rhs.rows_) {
+        throw std::invalid_argument("Matrix dimensions do not match. The number of columns in the left matrix must equal the number of rows in the right matrix");
+    }
+
+    if (mod_ != rhs.mod_) {
+        throw std::invalid_argument("Matrix moduli do not match. This is required for modular matrix multiplication");
+    }
+
+    NTL::Mat<NTL::ZZ> left = this->toNTL(); 
+    NTL::Mat<NTL::ZZ> right = rhs.toNTL();
+    NTL::Mat<NTL::ZZ> product;
+    NTL::mul(product, left, right);
+    Matrix result = fromNTL(product, mod_.get_str());
+    return result;
+};
+
 
 
 
