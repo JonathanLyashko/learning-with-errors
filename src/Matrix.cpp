@@ -145,3 +145,16 @@ Matrix Matrix::operator+(const Matrix& rhs) const {
     return result;
 };
 
+
+
+
+// --- DEBUGGING TOOLS ---
+void Matrix::print() {
+    for (size_t i = 0; i < rows_; i++) {
+        for (size_t j = 0; j < cols_; j++) {
+            std::cout << data_[i * cols_ + j].toString() << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+

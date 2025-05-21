@@ -65,6 +65,9 @@ class Matrix {
         // Generate a uniform random matrix (for LWE public key A)
         static Matrix randomUniform(size_t rows, size_t cols, const std::string& mod_str);
 
+        // --- DEBUGGING TOOLS ---
+        void print();
+
     private: 
 
         size_t rows_;
