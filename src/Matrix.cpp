@@ -124,3 +124,24 @@ Matrix Matrix::fromNTL(const NTL::Mat<NTL::ZZ>& M, const std::string& mod_str) {
     return result;
 }
 
+
+// --- MATRIX OPERATIONS ---
+// arithmetic
+Matrix Matrix::operator+(const Matrix& rhs) const {
+
+    if (rows_ != rhs.rows_ || cols_ != rhs.cols_) {
+        throw std::invalid_argument("Matrix dimensions do not match. This is required for matrix addition");
+    }
+
+    if (mod_ != rhs.mod_) {
+        throw std::invalid_argument("Matrix moduli do not match. This is required for modular matrix addition");
+    }
+
+    NTL::Mat<NTL::ZZ> left = this->toNTL(); 
+    NTL::Mat<NTL::ZZ> right = rhs.toNTL();
+    NTL::Mat<NTL::ZZ> sum;
+    NTL::add(sum, left, right);
+    Matrix result = fromNTL(sum, mod_.get_str());
+    return result;
+};
+
