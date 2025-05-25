@@ -181,6 +181,53 @@ Matrix Matrix::operator*(const Matrix& rhs) const {
 };
 
 
+// element-wise operations
+// Hadamard product (NTL doesn't have this built in)
+Matrix Matrix::elementWiseMultiply(const Matrix& rhs) const {
+    if (cols_ != rhs.rows_) {
+        throw std::invalid_argument("Matrix dimensions do not match. This is required for element-wise multiplication");
+    }
+
+    if (mod_ != rhs.mod_) {
+        throw std::invalid_argument("Matrix moduli do not match. This is required for modular element-wise multiplication");
+    }
+
+    Matrix result(rows_, cols_, mod_.get_str());
+    
+    for (size_t i = 0; i < rows_; i++) {
+        for (size_t j = 0; j < cols_; j++) {
+            result(i, j) = data_[i * cols_ + j] * rhs(i, j);
+        }
+    }
+    
+    return result;
+};
+
+
+// special operations
+Matrix Matrix::transpose() const {
+    Matrix result(cols_, rows_, mod_.get_str());
+
+    for (size_t i = 0; i < rows_; i++) {
+        for (size_t j = 0; j < cols_; j++) {
+            result(j, i) = data_[i * cols_ + j];
+        }
+    }
+
+    return result;
+};
+
+Matrix Matrix::identity(size_t n, const std::string& mod_str) {
+    Matrix result(n, n, mod_str);
+    
+    for (size_t i = 0; i < n; i++) {
+        result(i, i) = ModInt("1", mod_str);
+    }
+    
+    return result;
+};
+
+
 
 
 // --- DEBUGGING TOOLS ---
